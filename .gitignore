@@ -1,2 +1,5 @@
 .env
 discord.log
+bot-env
+./bot.env
+.bot-env
