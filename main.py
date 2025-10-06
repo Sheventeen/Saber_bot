@@ -1,7 +1,5 @@
 import os
 import discord
-import asyncio
-import utils
 import logging
 from bson import ObjectId
 from dotenv import load_dotenv
@@ -11,7 +9,8 @@ load_dotenv()
 discord_token = os.getenv('DISCORD_TOKEN')
 
 mongo_uri = os.getenv('MONGO_URI')
-mongo_client = MongoClient(mongo_uri)
+mongo_client = MongoClient(
+    mongo_uri)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -39,8 +38,6 @@ class MyClient(discord.Client):
                 {'$set': {'day_count': prev}}
             )      
             await message.reply(prev)
-
-
 
 client = MyClient(intents=intents)
 client.run(discord_token, log_handler=handler)
